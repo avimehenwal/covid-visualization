@@ -4,6 +4,8 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import VueGoogleCharts from 'vue-google-charts'
+Vue.use(VueGoogleCharts)
 
 Vue.config.productionTip = false
 

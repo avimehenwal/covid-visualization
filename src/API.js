@@ -3,7 +3,6 @@ import axios from 'axios'
 const http = axios.create({
   baseURL: 'https://api.covid19api.com/'
 })
-// curl --location --request GET 'https://api.covid19api.com/'
 
 export default {
   async getSummary () {
@@ -12,6 +11,14 @@ export default {
   },
   async getDefault () {
     const { data } = await http.get('/')
+    return data
+  },
+  async getStats () {
+    const { data } = await http.get('/stats')
+    return data
+  },
+  async getCountryMap () {
+    const { data } = await http.get('/dayone/country/united-kingdom/status/recovered')
     return data
   }
 

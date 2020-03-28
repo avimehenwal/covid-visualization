@@ -1,5 +1,14 @@
 # covid-visualization
 
+## ToDos
+
+1. [ ] Use state management pattern
+2. [ ] API Polling interval
+3. [ ] Loading graphic management
+4. [ ] Incremental number animation
+5. [ ] Suggest search
+6. [ ] backup data in `.json` file
+
 ## Animations
 
 * Number animation

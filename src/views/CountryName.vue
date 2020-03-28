@@ -1,6 +1,23 @@
 <template>
 <!-- GeoMAp, Province map, KeyCounters -->
 <v-container>
+
+    <v-autocomplete
+      v-model="model"
+      :items="items"
+      :loading="isLoading"
+      :search-input.sync="search"
+      color="white"
+      hide-no-data
+      hide-selected
+      item-text="Description"
+      item-value="API"
+      label="Public APIs"
+      placeholder="type to select a country"
+      prepend-icon="mdi-database-search"
+      return-object
+    ></v-autocomplete>
+
    <v-text-field label="country" placeholder="Type or select a country name"
     filled rounded dense append-icon="mdi-magnify" clearable
     ></v-text-field>

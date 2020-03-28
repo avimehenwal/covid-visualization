@@ -11,8 +11,10 @@
       <v-text-field v-model="search" append-icon="mdi-magnify"
         label="Search" single-line hide-details ></v-text-field>
     </v-card-title>
-      <v-data-table :headers="headers" :items="info" :loading="loading" :sort-by="['TotalDeaths']"
-        :items-per-page="50" :search="search" @click:row="handleClick" :sort-desc="[true]">
+      <v-data-table :headers="headers" :items="country" :loading="loading"
+        :sort-by="['TotalDeaths']"
+        :items-per-page="50" :search="search"
+        @click:row="handleClick" :sort-desc="[true]">
       <template v-slot:item.TotalDeaths="{ item }">
         <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
       </template>
@@ -22,30 +24,18 @@
 </template>
 
 <script>
-// import axios from 'axios'
-import API from '@/API.js'
-
-// const url = 'https://api.covid19api.com/stats'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Summary',
+  mounted () {
+    this.$store.dispatch('fetch_COUNTRY')
+  },
   data () {
     return {
       // info: null,
       search: '',
       loading: false,
-      info: [
-        {
-          Country: 'Algeria',
-          Slug: 'algeria',
-          NewConfirmed: 65,
-          TotalConfirmed: 367,
-          NewDeaths: 4,
-          TotalDeaths: 25,
-          NewRecovered: -36,
-          TotalRecovered: 29
-        }
-      ],
       headers: [
         { text: 'Country', value: 'Country' },
         // { text: 'Slug', value: 'Slug' },
@@ -57,21 +47,6 @@ export default {
         { text: 'TotalRecovered', value: 'TotalRecovered' }
       ]
     }
-  },
-  // mounted () {
-  //   axios
-  //     .get(url)
-  //     .then(response => (this.info = response))
-  // },
-  created () {
-    API.getSummary()
-      .then(response => {
-        this.info = response.Countries
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    this.wait()
   },
   methods: {
     getColor (calories) {
@@ -103,6 +78,13 @@ export default {
           }
         }) // -> /user/123
     }
+  },
+  computed: {
+    ...mapState({
+      loading: state => state.loading,
+      error: state => state.error,
+      country: state => state.country
+    })
   }
 }
 </script>

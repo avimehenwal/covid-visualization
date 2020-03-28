@@ -3,9 +3,9 @@
   <v-progress-circular size="300" width="40" :color="color"
     :value="value" rotate="90">
     <div class="text-center">
-      <span class="display-2 font-weight-bold">
-        {{ value }}%
-        <br> <div class="display-1">{{ text }}</div>
+      <span class="display-2 font-weight-bold auto">
+        {{ value }}% <br>
+        <p class="headline">infected <br> {{ text }}</p>
       </span>
     </div>
   </v-progress-circular>

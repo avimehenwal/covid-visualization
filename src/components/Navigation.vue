@@ -5,7 +5,7 @@
     <v-list dense nav class="py-0">
       <v-list-item two-line :class="miniVariant && 'px-0'" to="/">
         <v-list-item-avatar>
-          <v-icon x-large color="primary">mdi-desktop-mac-dashboard</v-icon>
+          <v-icon x-large color="primary">mdi-vector-circle</v-icon>
         </v-list-item-avatar>
 
         <v-list-item-content>
@@ -17,7 +17,7 @@
       <!-- Navigating links from router -->
       <v-list-item v-for="item in $router.options.routes" :key="item.name" link
         :to="item.path">
-        <v-list-item-icon> <v-icon>{{ item.icon }}</v-icon></v-list-item-icon>
+        <v-list-item-icon> <v-icon color="accent">{{ item.icon }}</v-icon></v-list-item-icon>
         <v-list-item-content>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item-content>

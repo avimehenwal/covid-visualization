@@ -1,6 +1,10 @@
 <template>
 <!-- GeoMAp, Province map, KeyCounters -->
 <v-container>
+   <v-text-field label="country" placeholder="Type or select a country name"
+    filled rounded dense append-icon="mdi-magnify" clearable
+    ></v-text-field>
+
   <v-row>
     <v-col cols="5">
       <GChart type="GeoChart" :data="country" :options="chartOptions"/>

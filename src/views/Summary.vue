@@ -1,14 +1,24 @@
 <template>
+<v-container>
   <v-card>
+    <!-- <v-sheet color="primary lighten-1" dark> -->
     <v-card-title>
-      Summary byCountry
+      <div class="display-1">
+        Summary by Countries
+      </div>
+    <!-- </v-sheet> -->
       <v-spacer></v-spacer>
       <v-text-field v-model="search" append-icon="mdi-magnify"
         label="Search" single-line hide-details ></v-text-field>
-      <v-data-table :headers="headers" :items="info" :items-per-page="20"
-        :search="search" ></v-data-table>
     </v-card-title>
+      <v-data-table :headers="headers" :items="info"
+        :items-per-page="20" :search="search">
+      <template v-slot:item.TotalDeaths="{ item }">
+        <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
+      </template>
+      </v-data-table>
   </v-card>
+</v-container>
 </template>
 
 <script>
@@ -44,53 +54,6 @@ export default {
         { text: 'TotalDeaths', value: 'TotalDeaths' },
         { text: 'NewRecovered', value: 'NewRecovered' },
         { text: 'TotalRecovered', value: 'TotalRecovered' }
-      ],
-      headers2: [
-        {
-          text: 'Dessert (100g serving)',
-          align: 'start',
-          sortable: false,
-          value: 'name'
-        },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Iron (%)', value: 'iron' }
-      ],
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: '1%'
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: '1%'
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: '7%'
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: '8%'
-        }
       ]
     }
   },
@@ -107,6 +70,13 @@ export default {
       .catch(error => {
         console.log(error)
       })
+  },
+  methods: {
+    getColor (calories) {
+      if (calories > 2000) return 'red'
+      else if (calories > 1000) return 'orange'
+      else if (calories > 100) return 'yellow'
+    }
   }
 }
 </script>

@@ -1,12 +1,16 @@
 <template>
   <v-app>
-    <v-app-bar app color="white" flat>
+    <v-app-bar color="white" flat>
       <v-btn text>
-        <div class="ml-2"> COVID Dashboard </div>
+        <div class="ml-2">@avi COVID Dashboard</div>
       </v-btn>
       <v-spacer></v-spacer>
+      <v-btn href="https://www.google.com/covid19-map/" target="_blank" text >
+        <span class="mr-2">GeoMap</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
       <v-btn href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019" target="_blank" text >
-        <span class="mr-2">What is Corona?</span>
+        <span class="mr-2">Coronavirus disease</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>

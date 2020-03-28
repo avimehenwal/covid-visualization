@@ -12,7 +12,7 @@
         label="Search" single-line hide-details ></v-text-field>
     </v-card-title>
       <v-data-table :headers="headers" :items="info" :loading="loading"
-        :items-per-page="20" :search="search" @click:row="handleClick">
+        :items-per-page="50" :search="search" @click:row="handleClick">
       <template v-slot:item.TotalDeaths="{ item }">
         <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
       </template>
@@ -87,6 +87,8 @@ export default {
     },
     handleClick (value) {
       alert(value.Slug)
+      const slug = value.Slug
+      this.$router.push({ path: `/country/${slug}` }) // -> /user/123
     }
   }
 }

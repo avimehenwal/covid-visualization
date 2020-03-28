@@ -20,6 +20,14 @@ export default {
   async getCountryMap () {
     const { data } = await http.get('/dayone/country/united-kingdom/status/recovered')
     return data
+  },
+  async getCountris () {
+    const { data } = await http.get('/countries')
+    return data
+  },
+  async getGlobalCount () {
+    const { data } = await axios.get('https://covidapi.info/api/v1/global')
+    return data
   }
 
   // async getTweets(params) {

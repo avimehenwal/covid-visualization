@@ -1,29 +1,31 @@
 <template>
   <v-card>
-    <v-container>
-      <v-btn @click="formatSparklineList()"> </v-btn>
-      <v-card-title>
-        {{ info.length }} Sample Points
-      </v-card-title>
-      <v-sparkline
-        :fill="fill"
-        :labels="labels"
-        :line-width="width"
-        :padding="padding"
-        :smooth="radius || false"
-        :value="value"
-        auto-draw
-      ></v-sparkline>
-
-      <!-- <GChart type="GeoChart" :data="chartData" :options="chartOptions"
-        :settings="{ packages: ['corechart', 'table', 'map'], mapsApiKey: 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY' }" /> -->
-    </v-container>
-    {{ info }}
+    <v-row>
+      <v-col cols="6">
+        <GChart type="GeoChart" :data="country" :options="chartOptions"/>
+        <!-- <GChart type="Histogram" :data="histogram" :options="chartOptions"/> -->
+      </v-col>
+      <v-col cols="6">
+        <v-btn @click="histogramData()"> </v-btn>
+        <v-card-title>
+          {{ info.length }} Sample Points
+        </v-card-title>
+        <v-sparkline
+          :fill="fill"
+          :labels="labels"
+          :line-width="width"
+          :padding="padding"
+          :smooth="radius || false"
+          :value="value"
+          auto-draw
+        ></v-sparkline>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 
 <script>
-import API from '@/API.js'
+// import API from '@/API.js'
 import moment from 'moment'
 
 export default {
@@ -65,29 +67,20 @@ export default {
           Status: 'recovered'
         }
       ],
-      chartData: [
-        ['City', 'Population', 'Area'],
-        ['Rome', 2761477, 1285.31],
-        ['Milan', 1324110, 181.76],
-        ['Naples', 959574, 117.27],
-        ['Turin', 907563, 130.17],
-        ['Palermo', 655875, 158.9],
-        ['Genoa', 607906, 243.6],
-        ['Bologna', 380181, 140.7],
-        ['Florence', 371282, 102.41],
-        ['Fiumicino', 67370, 213.44],
-        ['Anzio', 52192, 43.43],
-        ['Ciampino', 38262, 11]
+      country: [
+        ['Country'],
+        ['United Kingdom']
       ],
       chartOptions: {
-        region: 'IT',
-        displayMode: 'markers',
-        colorAxis: { colors: ['green', 'blue'] }
+        // region: 'IT',
+        // displayMode: 'markers',
+        // colorAxis: { colors: ['green', 'blue'] }
         // chart: {
         //   title: 'Company Performance',
         //   subtitle: 'Sales, Expenses, and Profit: 2014-2017'
         // }
-      }
+      },
+      histogram: []
     }
   },
   methods: {
@@ -99,24 +92,35 @@ export default {
         this.value.push(this.info[i].Cases)
         console.log(this.labels)
       }
+    },
+    histogramData () {
+      this.histogram = [['Date', 'Number of cases']]
+      for (var i = 0; i <= this.histogram.length; i++) {
+        var record = []
+        record.push(this.info[i].Cases)
+        record.push(moment(this.info[i].Date).format('Do.MMM.YYYY'))
+        this.histogram.push(record)
+      }
+      console.log(this.histogram)
     }
   },
   watch: {
     info: function (val) {
       // when the hash prop changes, this function will be fired.
       this.formatSparklineList()
-      console.log(val)
+      this.histogramData()
     }
   },
   created () {
-    API.getCountryMap()
-      .then(response => {
-        this.info = response
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    // API.getCountryMap()
+    //   .then(response => {
+    //     this.info = response
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
     this.formatSparklineList()
+    this.histogramData()
   }
 }
 </script>

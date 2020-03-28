@@ -11,8 +11,8 @@
       <v-text-field v-model="search" append-icon="mdi-magnify"
         label="Search" single-line hide-details ></v-text-field>
     </v-card-title>
-      <v-data-table :headers="headers" :items="info" :loading="loading"
-        :items-per-page="50" :search="search" @click:row="handleClick">
+      <v-data-table :headers="headers" :items="info" :loading="loading" :sort-by="['TotalDeaths']"
+        :items-per-page="50" :search="search" @click:row="handleClick" :sort-desc="[true]">
       <template v-slot:item.TotalDeaths="{ item }">
         <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
       </template>

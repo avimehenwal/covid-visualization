@@ -1,5 +1,5 @@
 <template>
-  <v-card dark :color="color">
+  <v-card dark :color="color" hover light outlined shaped>
     <div class="text-center">
       <div v-if="percent">
         <div class="display-2 pt-5">{{ number.toLocaleString() }} %</div>

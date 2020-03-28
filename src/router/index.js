@@ -21,17 +21,22 @@ const routes = [
   {
     path: '/summary',
     name: 'Summary',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Summary.vue')
+    component: () => import(/* webpackChunkName: "Summary" */ '../views/Summary.vue')
   },
   {
     path: '/country',
     name: 'Country',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Country.vue')
+    component: () => import(/* webpackChunkName: "Country" */ '../views/Country.vue')
+  },
+  {
+    path: '/country/:name',
+    name: 'CountryName',
+    component: () => import(/* webpackChunkName: "CountryName" */ '../views/CountryName.vue')
   },
   {
     path: '/global',
     name: 'Global',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Global.vue')
+    component: () => import(/* webpackChunkName: "Global" */ '../views/Global.vue')
   }
 ]
 

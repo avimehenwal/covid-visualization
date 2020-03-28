@@ -86,14 +86,23 @@ export default {
       }.bind(this), 3000)
     },
     handleClick (value) {
-      alert(value.Slug)
+      // alert(value.Slug)
       const slug = value.Slug
-      this.$router.push({ path: `/country/${slug}` }) // -> /user/123
+      this.$router.push(
+        {
+          path: `/country/${slug}`,
+          query: {
+            Slug: value.Slug,
+            Country: value.Country,
+            NewConfirmed: value.NewConfirmed,
+            TotalConfirmed: value.TotalConfirmed,
+            NewDeaths: value.NewDeaths,
+            TotalDeaths: value.TotalDeaths,
+            NewRecovered: value.NewRecovered,
+            TotalRecovered: value.TotalRecovered
+          }
+        }) // -> /user/123
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

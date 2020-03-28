@@ -1,5 +1,5 @@
 <template>
-  <v-card dark :color="color" hover light outlined shaped>
+  <v-card dark :color="color" hover light outlined>
     <div class="text-center">
       <div v-if="percent">
         <div class="display-2 pt-5">{{ number.toLocaleString() }} %</div>
@@ -7,7 +7,16 @@
       <div v-else>
         <div class="display-2 pt-5">{{ number.toLocaleString() }}</div>
       </div>
-      <div class="pt-2 font-weight-bold"> {{ text }} </div>
+      <v-card-text class="font-weight-bold">{{text}}</v-card-text>
+
+    <div v-if="newCases">
+      <span class="font-weight-bold">
+        <v-icon large color="yellow">mdi-menu-up</v-icon>
+        <!-- <v-icon>mdi-plus</v-icon> -->
+         {{ newCases.toLocaleString() }}
+      </span>
+    </div>
+
     </div>
   </v-card>
 </template>
@@ -31,6 +40,9 @@ export default {
     percent: {
       type: Boolean,
       default: false
+    },
+    newCases: {
+      type: Number
     }
   }
 }

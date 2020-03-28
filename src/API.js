@@ -28,6 +28,10 @@ export default {
   async getGlobalCount () {
     const { data } = await axios.get('https://covidapi.info/api/v1/global')
     return data
+  },
+  async getByCountryName (name) {
+    const { data } = await http.get('/country/' + name + '/status/confirmed')
+    return data
   }
 
   // async getTweets(params) {

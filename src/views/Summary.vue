@@ -11,8 +11,8 @@
       <v-text-field v-model="search" append-icon="mdi-magnify"
         label="Search" single-line hide-details ></v-text-field>
     </v-card-title>
-      <v-data-table :headers="headers" :items="info"
-        :items-per-page="20" :search="search">
+      <v-data-table :headers="headers" :items="info" :loading="loading"
+        :items-per-page="20" :search="search" @click:row="handleClick">
       <template v-slot:item.TotalDeaths="{ item }">
         <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
       </template>
@@ -33,6 +33,7 @@ export default {
     return {
       // info: null,
       search: '',
+      loading: false,
       info: [
         {
           Country: 'Algeria',
@@ -70,12 +71,22 @@ export default {
       .catch(error => {
         console.log(error)
       })
+    this.wait()
   },
   methods: {
     getColor (calories) {
       if (calories > 2000) return 'red'
       else if (calories > 1000) return 'orange'
       else if (calories > 100) return 'yellow'
+    },
+    wait: function () {
+      this.loading = true
+      setTimeout(function () {
+        this.loading = false
+      }.bind(this), 3000)
+    },
+    handleClick (value) {
+      alert(value.Slug)
     }
   }
 }

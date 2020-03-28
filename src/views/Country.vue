@@ -1,4 +1,13 @@
 <template>
+<v-container>
+
+  <v-data-table :headers="headers" :items="info"
+        :items-per-page="20" :search="search">
+      <template v-slot:item.TotalDeaths="{ item }">
+        <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
+      </template>
+  </v-data-table>
+
   <v-card>
     <v-row>
       <v-col cols="6">
@@ -22,6 +31,7 @@
       </v-col>
     </v-row>
   </v-card>
+</v-container>
 </template>
 
 <script>

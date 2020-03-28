@@ -1,25 +1,22 @@
 # covid-visualization
 
-## ToDos
+> My delightful Nuxt.js project
 
-1. [ ] Use state management pattern
-2. [ ] API Polling interval
-3. [ ] Loading graphic management
-4. [ ] Incremental number animation
-5. [ ] Suggest search
-6. [ ] backup data in `.json` file
+## Build Setup
 
-## Animations
+```bash
+# install dependencies
+$ yarn install
 
-* Number animation
-  * https://vuejsexamples.com/a-simple-vue-animated-number-for-vue2/
+# serve with hot reload at localhost:3000
+$ yarn dev
 
+# build for production and launch server
+$ yarn build
+$ yarn start
 
-## References
+# generate static project
+$ yarn generate
+```
 
-* https://github.com/sorxrob/2019-ncov-frontend
-* https://github.com/CSSEGISandData/COVID-19/issues/576
-* https://github.com/github/covid19-dashboard
-* https://extranet.who.int/publicemergency
-* https://chschoenenberger.shinyapps.io/covid19_dashboard/
-* https://www.worldometers.info/population/
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

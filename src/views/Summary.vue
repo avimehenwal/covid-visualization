@@ -12,9 +12,9 @@
         label="Search" single-line hide-details ></v-text-field>
     </v-card-title>
       <v-data-table :headers="headers" :items="country" :loading="loading"
-        :sort-by="['TotalDeaths']"
+        :sort-by="TotalDeaths"
         :items-per-page="50" :search="search"
-        @click:row="handleClick" :sort-desc="[true]">
+        @click:row="handleClick" :sort-desc="true">
       <template v-slot:item.TotalDeaths="{ item }">
         <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
       </template>

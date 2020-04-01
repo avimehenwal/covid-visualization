@@ -1,5 +1,8 @@
 # covid-visualization
 
+![Home Screen](demo/home_screen.png)
+![Country Breakdown](demo/country_breakdown.png)
+
 ## ToDos
 
 1. [ ] Use state management pattern

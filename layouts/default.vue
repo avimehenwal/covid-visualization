@@ -94,17 +94,17 @@ export default {
           to: '/test',
           title: 'Test Page',
           icon: 'mdi-test-tube'
-        },
-        {
-          to: '/country/:name',
-          title: 'Country',
-          icon: 'mdi-earth'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
         }
+        // {
+        //   to: '/country/:name',
+        //   title: 'Country',
+        //   icon: 'mdi-earth'
+        // },
+        // {
+        //   icon: 'mdi-chart-bubble',
+        //   title: 'Inspire',
+        //   to: '/inspire'
+        // }
       ],
       miniVariant: false,
       right: true,

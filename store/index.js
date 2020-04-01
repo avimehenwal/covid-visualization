@@ -33,16 +33,12 @@ export const mutations = {
 
 export const actions = {
   fetch_COUNTRY (context) {
-    context.commit('set_LOADING_true')
-    context.commit('set_ERROR_false')
     if (context.getters.getCountry == null) {
       api.getSummary()
         .then(response => {
           context.commit('store_COUNTRY', response.Countries)
-          context.commit('set_LOADING_false')
         })
         .catch(error => {
-          console.log(error)
           context.commit('set_ERROR_true', error)
         })
     }
@@ -54,7 +50,11 @@ export const getters = {
     return state.country
   },
   getCountryCount: state => {
-    return state.country.length
+    if (state.country= null) {
+      return state.country.length
+    } else {
+      return 0
+    }
   }
 
 }

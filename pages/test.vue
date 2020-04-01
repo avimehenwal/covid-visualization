@@ -20,7 +20,7 @@ export default {
         'info',
         'warning',
         'error',
-        'succes'
+        'success'
       ]
     }
   }

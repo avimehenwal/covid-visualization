@@ -62,7 +62,12 @@
     </v-navigation-drawer> -->
 
     <v-footer :fixed="fixed" app >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; {{ new Date().getFullYear() }} - avimehenwal</span>
+      <v-spacer/>
+      <a href="https://www.buymeacoffee.com/F1j07cV" target="_blank">
+        <v-img src="https://cdn.buymeacoffee.com/buttons/default-white.png"
+         alt="Buy Me A Coffee" height="40px" width="180px"/>
+      </a>
     </v-footer>
   </v-app>
 </template>
@@ -94,17 +99,17 @@ export default {
           to: '/test',
           title: 'Test Page',
           icon: 'mdi-test-tube'
-        }
+        },
         // {
         //   to: '/country/:name',
         //   title: 'Country',
         //   icon: 'mdi-earth'
         // },
-        // {
-        //   icon: 'mdi-chart-bubble',
-        //   title: 'Inspire',
-        //   to: '/inspire'
-        // }
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Questions',
+          to: '/inspire'
+        }
       ],
       miniVariant: false,
       right: true,

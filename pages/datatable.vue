@@ -2,16 +2,17 @@
 <v-container>
   <v-card>
     <v-card-title>
-      <div class="display-1">
-        Summary by Countries
-      </div>
+      <div class="display-1"> Summary by Countries </div>
       <v-spacer></v-spacer>
       <v-text-field v-model="search" append-icon="mdi-magnify"
         label="Search" single-line hide-details ></v-text-field>
     </v-card-title>
-      <v-data-table :headers="headers" :items="country" :loading="loadingStatus"
-        :sort-by="TotalDeaths" :items-per-page="50" :search="search"
-        @click:row="handleClick" :sort-desc="true">
+    <v-card-subtitle> <v-chip small color="success"> {{ recordCount }} </v-chip> Records</v-card-subtitle>
+      <v-data-table :headers="headers" :items="country"
+        :sort-by="['TotalDeaths']" :sort-desc="true"
+        :items-per-page="50"
+        :search="search"
+        @click:row="handleClick">
       <template v-slot:item.TotalDeaths="{ item }">
         <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
       </template>
@@ -23,6 +24,7 @@
 <script>
 
 export default {
+  loading: true,
   data () {
     return {
       search: '',
@@ -72,9 +74,14 @@ export default {
     }
   },
   computed: {
-    loadingStatus () {
-      return this.$store.state.loading
+    recordCount () {
+      return this.country.length
     }
+  },
+  async asyncData ({ $axios }) {
+    let response = await $axios.$get('https://api.covid19api.com/summary')
+    return { country: response.Countries }
   }
+
 }
 </script>

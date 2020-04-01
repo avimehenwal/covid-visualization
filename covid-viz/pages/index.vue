@@ -24,49 +24,42 @@
         <Percent :value="recoveredPercent" text="Recovered" color="success"/>
       </v-col>
     </v-row>
-
   </v-container>
 </template>
 
 <script>
 import GlobalStat from '@/components/GlobalStat.vue'
 import Percent from '@/components/Percent.vue'
-import api from '@/api.js'
+// import api from '@/api.js'
 
 export default {
-  name: 'Global',
   components: {
     GlobalStat,
     Percent
   },
   data () {
     return {
-      totalPopulation: 780000000,
-      data: {}
+      totalPopulation: 780000000
     }
   },
   computed: {
     recoveredPercent () {
       var result = (this.data.result.recovered / this.data.result.confirmed) * 100
-      return result.toFixed(2)
+      return Number(result.toFixed(2))
     },
     deadPercent () {
       var result = (this.data.result.deaths / this.data.result.confirmed) * 100
-      return result.toFixed(2)
+      return Number(result.toFixed(2))
     },
     globalInfectedPercentage () {
       var result = (this.data.result.confirmed / this.totalPopulation) * 100
-      return result.toFixed(2)
+      return Number(result.toFixed(2))
     }
   },
-  created () {
-    API.getGlobalCount()
-      .then(response => {
-        this.data = response
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  async asyncData ({ $axios, store }) {
+    const { data } = await $axios.get('https://covidapi.info/api/v1/global')
+    store.dispatch('fetch_COUNTRY')
+    return { data }
   }
 }
 </script>

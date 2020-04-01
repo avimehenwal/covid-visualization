@@ -35,3 +35,7 @@
 * https://extranet.who.int/publicemergency
 * https://chschoenenberger.shinyapps.io/covid19_dashboard/
 * https://www.worldometers.info/population/
+
+## Support Me
+
+<a href="https://www.buymeacoffee.com/F1j07cV" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>

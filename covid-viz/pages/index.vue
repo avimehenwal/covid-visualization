@@ -12,5 +12,8 @@
 <script>
 
 export default {
+  asyncData ({ store }) {
+    store.dispatch('fetch_COUNTRY')
+  }
 }
 </script>

@@ -52,5 +52,9 @@ export const actions = {
 export const getters = {
   getCountry: state => {
     return state.country
+  },
+  getCountryCount: state => {
+    return state.country.length
   }
+
 }

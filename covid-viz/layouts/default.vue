@@ -89,7 +89,7 @@ export default {
           to: '/summary'
         },
         {
-          to: '/summary',
+          to: '/datatable',
           title: 'Data Table',
           icon: 'mdi-table'
         },

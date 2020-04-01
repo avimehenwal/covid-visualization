@@ -1,20 +1,21 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer"
+      :mini-variant="miniVariant" :clipped="clipped" fixed app >
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
+        <v-list-item two-line :class="miniVariant && 'px-0'" to="/">
+          <v-list-item-avatar>
+            <v-icon x-large color="primary">mdi-vector-circle</v-icon>
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title>COVID-19 Dashboard</v-list-item-title>
+            <v-list-item-subtitle>@avi v0.1.8</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact >
           <v-list-item-action>
             <v-icon color="accent"  >{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -83,11 +84,6 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        },
-        {
           icon: 'mdi-google-analytics',
           title: 'Statistics',
           to: '/summary'
@@ -111,6 +107,11 @@ export default {
           to: '/country/:name',
           title: 'Country',
           icon: 'mdi-earth'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Inspire',
+          to: '/inspire'
         }
       ],
       miniVariant: false,

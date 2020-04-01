@@ -12,7 +12,7 @@ const routes = [
     component: () => import('../views/Home.vue')
   },
   {
-    path: '/global',
+    path: '/statistics',
     name: 'Statistics',
     icon: 'mdi-google-analytics',
     component: () => import(/* webpackChunkName: "Global" */ '../views/Global.vue')

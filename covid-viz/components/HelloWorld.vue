@@ -16,9 +16,3 @@ export default {
   name: 'HelloWorld'
 }
 </script>
-
-<style>
-body {
- background-image: url("../assets/covid-bg.png");
-}
-</style>

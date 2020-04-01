@@ -1,19 +1,65 @@
 <template>
-  <v-parallax dark src="https://www.staedteregion-aachen.de/fileadmin/_processed_/7/a/csm_Corona_200318_1f6dfab863.jpg">
-    <v-row align="center" justify="center" >
-      <v-col class="text-center" cols="12">
-        <h1 class="display-1 font-weight-thin mb-4">Data Visualization</h1>
-        <h4 class="subheading">Made with Love</h4>
+  <v-container>
+    <v-row>
+      <v-col cols="12" md="3" >
+        <GlobalStat :number="data.result.confirmed" text="Confirmed Cases"/>
+      </v-col>
+      <v-col cols="12" md="3" >
+        <GlobalStat :number="data.result.deaths" text="Deaths Reported" color="warning"/>
+      </v-col>
+      <v-col cols="12" md="3" >
+        <GlobalStat :number="data.result.recovered" text="Recovered Cases" color="success"/>
+      </v-col>
+      <v-col cols="12" md="3" >
+        <GlobalStat :number="globalInfectedPercentage" percent
+         text="Global population infected" color="secondary"/>
       </v-col>
     </v-row>
-  </v-parallax>
+
+    <v-row>
+      <v-col offset="0">
+        <Percent :value="deadPercent" text="People died" color="warning"/>
+      </v-col>
+      <v-col>
+        <Percent :value="recoveredPercent" text="Recovered" color="success"/>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
+import GlobalStat from '@/components/GlobalStat.vue'
+import Percent from '@/components/Percent.vue'
+// import api from '@/api.js'
 
 export default {
-  asyncData ({ store }) {
+  components: {
+    GlobalStat,
+    Percent
+  },
+  data () {
+    return {
+      totalPopulation: 780000000
+    }
+  },
+  computed: {
+    recoveredPercent () {
+      var result = (this.data.result.recovered / this.data.result.confirmed) * 100
+      return Number(result.toFixed(2))
+    },
+    deadPercent () {
+      var result = (this.data.result.deaths / this.data.result.confirmed) * 100
+      return Number(result.toFixed(2))
+    },
+    globalInfectedPercentage () {
+      var result = (this.data.result.confirmed / this.totalPopulation) * 100
+      return Number(result.toFixed(2))
+    }
+  },
+  async asyncData ({ $axios, store }) {
+    const { data } = await $axios.get('https://covidapi.info/api/v1/global')
     store.dispatch('fetch_COUNTRY')
+    return { data }
   }
 }
 </script>

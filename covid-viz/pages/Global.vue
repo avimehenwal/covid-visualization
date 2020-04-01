@@ -34,7 +34,6 @@ import Percent from '@/components/Percent.vue'
 import api from '@/api.js'
 
 export default {
-  name: 'Global',
   components: {
     GlobalStat,
     Percent
@@ -60,7 +59,7 @@ export default {
     }
   },
   created () {
-    API.getGlobalCount()
+    api.getGlobalCount()
       .then(response => {
         this.data = response
       })

@@ -100,11 +100,12 @@ export default {
           title: 'Test Page',
           icon: 'mdi-test-tube'
         },
-        // {
-        //   to: '/country/:name',
-        //   title: 'Country',
-        //   icon: 'mdi-earth'
-        // },
+        {
+          // to: '/country/:name',
+          to: '/countryname',
+          title: 'Country',
+          icon: 'mdi-earth'
+        },
         {
           icon: 'mdi-chart-bubble',
           title: 'Questions',

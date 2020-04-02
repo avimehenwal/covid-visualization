@@ -67,6 +67,13 @@ export const getters = {
     } else {
       return 0
     }
+  },
+  countryList (state) {
+    let countryList = []
+    state.country.forEach(function (item, index) {
+      console.log(item.Country, index);
+      countryList.push(item.Country)
+    });
+    return countryList
   }
-
 }

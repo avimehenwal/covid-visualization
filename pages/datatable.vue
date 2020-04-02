@@ -71,9 +71,6 @@ export default {
             TotalRecovered: value.TotalRecovered
           }
         }) // -> /user/123
-    },
-    updateStore (data) {
-      this.$store.commit('store_COUNTRY', data)
     }
   },
   computed: {

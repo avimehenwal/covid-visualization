@@ -1,26 +1,15 @@
 <template>
 <!-- GeoMAp, Province map, KeyCounters -->
 <v-container>
-    <v-autocomplete
-      v-model="model"
-      :items="items"
-      :loading="isLoading"
-      :search-input.sync="search"
-      color="white"
-      hide-no-data
-      hide-selected
-      item-text="Description"
-      item-value="api"
-      label="countries"
-      placeholder="type to select a country"
-      prepend-icon="mdi-magnify"
-      return-object
-    ></v-autocomplete>
+  <v-autocomplete
+    v-model="value"
+    :items="this.$store.getters.countryList"
+    filled rounded clearable
+    label="Select a country"
+    @update:search-input="selCountry(value)"
+  ></v-autocomplete>
 
-   <v-text-field label="country" placeholder="Type or select a country name"
-    filled rounded dense append-icon="mdi-magnify" clearable
-    ></v-text-field>
-
+  {{value}} {{selected}}
   <v-row>
     <v-col cols="5">
       <GChart type="GeoChart" :data="country" :options="chartOptions"/>
@@ -73,12 +62,11 @@ export default {
   },
   data () {
     return {
-      Slug: this.$route.params.name,
-      query: this.$route.query,
+      value: null,
       info: [],
       country: [
         ['Country', 'TotalConfirmed'],
-        [this.$route.query.Country, this.$route.query.TotalConfirmed]
+        [this.value, 100]
       ],
       chartOptions: {
         // backgroundColor: '#81d4fa',
@@ -92,17 +80,18 @@ export default {
         height: 600
       }
     }
+    selected: {}
   },
-  created () {
-    api.getByCountryName(this.Slug)
-      .then(response => {
-        this.info = response
-      })
-      .catch(error => {
-        console.log(error)
-      })
-    // this.wait()
-  },
+  // created () {
+  //   api.getByCountryName(this.Slug)
+  //     .then(response => {
+  //       this.info = response
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  //   // this.wait()
+  // },
   computed: {
     columnChartData () {
       // console.log('columnChartData')
@@ -124,6 +113,18 @@ export default {
     },
     totalSample () {
       return this.info.length
+    }
+  },
+  methods: {
+    selCountry (value) {
+      if (value != null) {
+        this.$store.state.country.forEach(function (item) {
+          if (item.Country == value) {
+            console.log('WATCHER', value, 'index', item)
+            this.selected = item
+          }
+        })
+      }
     }
   }
 }

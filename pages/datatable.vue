@@ -78,6 +78,7 @@ export default {
   },
   computed: {
     recordCount () {
+<<<<<<< HEAD
       if (this.$store.state.country != null) {
         return this.$store.state.country.length
       } else {
@@ -96,5 +97,15 @@ export default {
   // async fetch({store}) {
   //   await store.dispatch("get")
   // }
+=======
+      return this.country.length
+    }
+  },
+  async asyncData ({ $axios }) {
+    let response = await $axios.$get('https://api.covid19api.com/summary')
+    return { country: response.Countries }
+  }
+
+>>>>>>> fcd76aa1b04a69b3948deba2bcaeff5e9f7f6fab
 }
 </script>

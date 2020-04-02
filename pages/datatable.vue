@@ -10,7 +10,7 @@
     <v-card-subtitle> <v-chip small color="success">
        {{ recordCount }} </v-chip> Records
        </v-card-subtitle>
-      <v-data-table :headers="headers" :items="country"
+      <v-data-table :headers="headers" :items="this.$store.state.country"
         :sort-by="['TotalDeaths']" :sort-desc="true"
         :items-per-page="50"
         :search="search"
@@ -30,8 +30,6 @@ export default {
   data () {
     return {
       search: '',
-      error: this.$store.state.error,
-      country: this.$store.state.country,
       headers: [
         { text: 'Country', value: 'Country' },
         // { text: 'Slug', value: 'Slug' },
@@ -73,19 +71,30 @@ export default {
             TotalRecovered: value.TotalRecovered
           }
         }) // -> /user/123
+    },
+    updateStore (data) {
+      this.$store.commit('store_COUNTRY', data)
     }
   },
   computed: {
     recordCount () {
-      return this.country.length
+      if (this.$store.state.country != null) {
+        return this.$store.state.country.length
+      } else {
+        return 0
+      }
     }
   },
-  // async asyncData ({ store }) {
-  async asyncData ({ $axios }) {
-    let response = await $axios.$get('https://api.covid19api.com/summary')
-    return { country: response.Countries }
+  async asyncData ({ store }) {
+  // async asyncData ({ $axios, store }) {
+    // let response = await $axios.$get('https://api.covid19api.com/summary')
+    // this.updateStore(response.Countries)
+    await store.dispatch('get')
+    // return { country: response.Countries }
     // store.dispatch('fetch_COUNTRY')
   }
-
+  // async fetch({store}) {
+  //   await store.dispatch("get")
+  // }
 }
 </script>

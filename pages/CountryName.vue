@@ -110,7 +110,6 @@ export default {
         height: 600
       }
     }
-    selected: {}
   },
   computed: {
     columnChartData () {

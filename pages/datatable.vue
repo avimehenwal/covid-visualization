@@ -37,6 +37,14 @@
 <script>
 export default {
   loading: true,
+  async asyncData ({ store }) {
+  // async asyncData ({ $axios, store }) {
+    // let response = await $axios.$get('https://api.covid19api.com/summary')
+    // this.updateStore(response.Countries)
+    await store.dispatch('get')
+    // return { country: response.Countries }
+    // store.dispatch('fetch_COUNTRY')
+  },
   data () {
     return {
       search: '',
@@ -87,14 +95,6 @@ export default {
         }
       }) // -> /user/123
     }
-  },
-  async asyncData ({ store }) {
-  // async asyncData ({ $axios, store }) {
-    // let response = await $axios.$get('https://api.covid19api.com/summary')
-    // this.updateStore(response.Countries)
-    await store.dispatch('get')
-    // return { country: response.Countries }
-    // store.dispatch('fetch_COUNTRY')
   }
   // async fetch({store}) {
   //   await store.dispatch("get")

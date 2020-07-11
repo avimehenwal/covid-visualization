@@ -9,8 +9,7 @@
       </v-card>
     </v-container>
 
-    {{this.$store.getters.countryList}}
-
+    {{ this.$store.getters.countryList }}
     <v-card>
       <v-autocomplete
         v-model="value"
@@ -18,33 +17,35 @@
         dense
         filled
         label="Select a country"
-      ></v-autocomplete>
+      />
     </v-card>
-
-    {{value}}
+    {{ value }}
     <v-card>
-      <v-text-field v-model="search" append-icon="mdi-magnify"
-        label="Search" single-line hide-details ></v-text-field>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+      />
     </v-card>
-
   </v-container>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      values: [],
-      value: null,
-      theme: [
-        'primary',
-        'accent',
-        'secondary',
-        'info',
-        'warning',
-        'error',
-        'success'
-      ]
-    }),
-  }
+export default {
+  data: () => ({
+    values: [],
+    value: null,
+    theme: [
+      'primary',
+      'accent',
+      'secondary',
+      'info',
+      'warning',
+      'error',
+      'success'
+    ]
+  })
 }
 </script>

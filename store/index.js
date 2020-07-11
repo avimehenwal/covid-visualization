@@ -49,15 +49,16 @@ export const actions = {
   setCountry (context, payload) {
     context.commit('store_COUNTRY', payload)
   },
-  async get({commit}) {
+  async get ({ commit }) {
     await this.$axios.get('https://api.covid19api.com/summary')
       .then((res) => {
         if (res.status === 200) {
           commit('store_COUNTRY', res.data.Countries)
+          // eslint-disable-next-line no-console
           console.log('FROM VUEX', res.data.Countries)
         }
       })
-  },
+  }
 }
 
 export const getters = {

@@ -41,9 +41,8 @@ export default {
     GlobalStat,
     Percent
   },
-  async asyncData ({ $axios, store }) {
+  async asyncData ({ $axios }) {
     const { data } = await $axios.get('https://covidapi.info/api/v1/global')
-    store.dispatch('fetch_COUNTRY')
     return { data }
   },
   data () {
@@ -53,8 +52,7 @@ export default {
   },
   computed: {
     recoveredPercent () {
-      const result =
-        (this.data.result.recovered / this.data.result.confirmed) * 100
+      const result = (this.data.result.recovered / this.data.result.confirmed) * 100
       return Number(result.toFixed(2))
     },
     deadPercent () {

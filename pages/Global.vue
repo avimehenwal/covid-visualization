@@ -34,37 +34,44 @@
 <script>
 import GlobalStat from '@/components/GlobalStat.vue'
 import Percent from '@/components/Percent.vue'
-// import api from '@/api.js'
+import api from '@/api.js'
 
 export default {
   components: {
     GlobalStat,
     Percent
   },
-  async asyncData ({ $axios, store }) {
-    const { data } = await $axios.get('https://covidapi.info/api/v1/global')
-    store.dispatch('fetch_COUNTRY')
-    return { data }
-  },
   data () {
     return {
-      totalPopulation: 780000000
+      totalPopulation: 780000000,
+      data: {}
     }
   },
   computed: {
     recoveredPercent () {
       const result =
         (this.data.result.recovered / this.data.result.confirmed) * 100
-      return Number(result.toFixed(2))
+      return result.toFixed(2)
     },
     deadPercent () {
       const result = (this.data.result.deaths / this.data.result.confirmed) * 100
-      return Number(result.toFixed(2))
+      return result.toFixed(2)
     },
     globalInfectedPercentage () {
       const result = (this.data.result.confirmed / this.totalPopulation) * 100
-      return Number(result.toFixed(2))
+      return result.toFixed(2)
     }
+  },
+  created () {
+    api
+      .getGlobalCount()
+      .then((response) => {
+        this.data = response
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      })
   }
 }
 </script>

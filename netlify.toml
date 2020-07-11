@@ -1,0 +1,11 @@
+[build]
+  command = "yarn run generate"
+  publish = "dist"
+
+[context.branch-deploy]
+  command = "yarn run generate"
+
+[context.branch-deploy.environment]
+  NODE_VERSION = "10.19.0"
+
+[context.deploy-preview]

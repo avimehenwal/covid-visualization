@@ -35,7 +35,6 @@
           </v-card-title>
           <v-card-text>
             <BarChart :data="barChartData" :options="{ maintainAspectRatio: false }" />
-            {{ barChartData }}
           </v-card-text>
         </v-card>
       </v-col>

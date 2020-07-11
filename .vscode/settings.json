@@ -18,6 +18,7 @@
         "release",
         "vscode",
         "page",
-        "git"
+        "git",
+        "netlify"
     ]
 }

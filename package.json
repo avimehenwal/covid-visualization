@@ -10,6 +10,7 @@
     "start": "nuxt start",
     "export": "nuxt export",
     "serve": "nuxt serve",
+    "generate": "yarn run build; yarn run export",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "semantic-release": "semantic-release"

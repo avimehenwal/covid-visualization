@@ -1,37 +1,35 @@
 <template>
-<v-container>
-
-  <v-data-table :headers="headers" :items="info"
-        :items-per-page="20" :search="search">
+  <v-container>
+    <v-data-table :headers="headers" :items="info" :items-per-page="20" :search="search">
       <template v-slot:item.TotalDeaths="{ item }">
-        <v-chip :color="getColor(item.TotalDeaths)" dark>{{ item.TotalDeaths }}</v-chip>
+        <v-chip :color="getColor(item.TotalDeaths)" dark>
+          {{ item.TotalDeaths }}
+        </v-chip>
       </template>
-  </v-data-table>
+    </v-data-table>
 
-  <v-card>
-    <v-row>
-      <v-col cols="6">
-        <GChart type="GeoChart" :data="country" :options="chartOptions"/>
-        <!-- <GChart type="Histogram" :data="histogram" :options="chartOptions"/> -->
-      </v-col>
-      <v-col cols="6">
-        <v-btn @click="histogramData()"> </v-btn>
-        <v-card-title>
-          {{ info.length }} Sample Points
-        </v-card-title>
-        <v-sparkline
-          :fill="fill"
-          :labels="labels"
-          :line-width="width"
-          :padding="padding"
-          :smooth="radius || false"
-          :value="value"
-          auto-draw
-        ></v-sparkline>
-      </v-col>
-    </v-row>
-  </v-card>
-</v-container>
+    <v-card>
+      <v-row>
+        <v-col cols="6">
+          <GChart type="GeoChart" :data="country" :options="chartOptions" />
+          <!-- <GChart type="Histogram" :data="histogram" :options="chartOptions"/> -->
+        </v-col>
+        <v-col cols="6">
+          <v-btn @click="histogramData()" />
+          <v-card-title>{{ info.length }} Sample Points</v-card-title>
+          <v-sparkline
+            :fill="fill"
+            :labels="labels"
+            :line-width="width"
+            :padding="padding"
+            :smooth="radius || false"
+            :value="value"
+            auto-draw
+          />
+        </v-col>
+      </v-row>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -77,10 +75,7 @@ export default {
           Status: 'recovered'
         }
       ],
-      country: [
-        ['Country'],
-        ['United Kingdom']
-      ],
+      country: [['Country'], ['United Kingdom']],
       chartOptions: {
         // region: 'IT',
         // displayMode: 'markers',
@@ -93,29 +88,8 @@ export default {
       histogram: []
     }
   },
-  methods: {
-    formatSparklineList () {
-      // this.labels = []
-      // this.value = []
-      for (var i = 0; i <= this.info.length; i++) {
-        this.labels.push(moment(this.info[i].Date).format('Do.MMM.YYYY'))
-        this.value.push(this.info[i].Cases)
-        console.log(this.labels)
-      }
-    },
-    histogramData () {
-      this.histogram = [['Date', 'Number of cases']]
-      for (var i = 0; i <= this.histogram.length; i++) {
-        var record = []
-        record.push(this.info[i].Cases)
-        record.push(moment(this.info[i].Date).format('Do.MMM.YYYY'))
-        this.histogram.push(record)
-      }
-      console.log(this.histogram)
-    }
-  },
   watch: {
-    info: function (val) {
+    info (val) {
       // when the hash prop changes, this function will be fired.
       this.formatSparklineList()
       this.histogramData()
@@ -131,6 +105,29 @@ export default {
     //   })
     this.formatSparklineList()
     this.histogramData()
+  },
+  methods: {
+    formatSparklineList () {
+      // this.labels = []
+      // this.value = []
+      for (let i = 0; i <= this.info.length; i++) {
+        this.labels.push(moment(this.info[i].Date).format('Do.MMM.YYYY'))
+        this.value.push(this.info[i].Cases)
+        // eslint-disable-next-line no-console
+        console.log(this.labels)
+      }
+    },
+    histogramData () {
+      this.histogram = [['Date', 'Number of cases']]
+      for (let i = 0; i <= this.histogram.length; i++) {
+        const record = []
+        record.push(this.info[i].Cases)
+        record.push(moment(this.info[i].Date).format('Do.MMM.YYYY'))
+        this.histogram.push(record)
+      }
+      // eslint-disable-next-line no-console
+      console.log(this.histogram)
+    }
   }
 }
 </script>

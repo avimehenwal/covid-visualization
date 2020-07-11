@@ -8,7 +8,7 @@ export const state = () => ({
   errorMessage: null,
   base: 'https://api.github.com/',
   user: 'avimehenwal',
-  repo: 'covid-visualization',
+  repo: 'covid-visualization'
 })
 
 export const mutations = {
@@ -40,12 +40,11 @@ export const actions = {
     context.commit('set_ERROR_false')
     if (context.getters.getCountry == null) {
       api.getSummary()
-        .then(response => {
+        .then((response) => {
           context.commit('store_COUNTRY', response.Countries)
           context.commit('set_LOADING_false')
         })
-        .catch(error => {
-          console.log(error)
+        .catch((error) => {
           context.commit('set_ERROR_true', error)
         })
     }
@@ -53,10 +52,10 @@ export const actions = {
 }
 
 export const getters = {
-  getCountry: state => {
+  getCountry: (state) => {
     return state.country
   },
-  getCountryCount: state => {
+  getCountryCount: (state) => {
     return state.country.length
   },
   repoUrl (state) {

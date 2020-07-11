@@ -1,36 +1,28 @@
 <template>
   <div>
-    <h1 class="font-weight-thin">
+    <h1 class="font-weight-light">
       Git Stats for {{ gitRepo }}
     </h1>
     <v-row>
       <v-col cols="12" xs="6" sm="6" md="3">
         <Tile
           :ban="ghUser.public_repos"
-          color="light-blue darken-4"
+          color="light-blue darken-2"
           desc="Public Repositories"
           banclass="grey--text text--lighten-4 font-weight-regular"
         />
       </v-col>
       <v-col cols="12" xs="6" sm="6" md="3">
-        <Tile
-          :ban="ghUser.public_gists"
-          desc="Public Gists"
-          banclass="blue--text text--lighten-3"
-        />
+        <Tile :ban="ghUser.followers" desc="Public Followers" banclass="red--text text--lighten-2" />
       </v-col>
       <v-col cols="12" xs="6" sm="6" md="3">
-        <Tile
-          :ban="ghUser.followers"
-          desc="Public Followers"
-          banclass="red--text text--lighten-3"
-        />
+        <Tile :ban="ghUser.public_gists" desc="Public Gists" banclass="blue--text text--lighten-2" />
       </v-col>
       <v-col cols="12" xs="6" sm="6" md="3">
         <Tile
           :ban="ghUser.following"
           desc="Public Following"
-          banclass="green--text text--lighten-3"
+          banclass="green--text text--lighten-2"
         />
       </v-col>
     </v-row>
@@ -42,7 +34,7 @@
             Commit Activity
           </v-card-title>
           <v-card-text>
-            <!-- <BarChart :data="barChartData" :options="{ maintainAspectRatio: false }" /> -->
+            <BarChart :data="barChartData" :options="{ maintainAspectRatio: false }" />
             {{ barChartData }}
           </v-card-text>
         </v-card>
@@ -52,26 +44,25 @@
           <v-card-title class="justify-center">
             <v-chip class="ma-2" color="primary">
               {{ numContributors }}
-            </v-chip>
-            Project contributor
+            </v-chip>Project contributor
           </v-card-title>
           <v-card-text>
-            <!-- <DoughnutChart :data="doughnutChartData" :options="{ legend: { display: false }, maintainAspectRatio: false }" /> -->
+            <DoughnutChart :data="doughnutChartData" :options="{ legend: { display: false }, maintainAspectRatio: false }" />
             {{ doughnutChartData }}
           </v-card-text>
-          <v-card-subtitle>
-            Number of people contributing to the project, with the volume of contributions
-          </v-card-subtitle>
+          <v-card-subtitle>Number of people contributing to the project, with the volume of contributions</v-card-subtitle>
         </v-card>
       </v-col>
     </v-row>
+    {{ barChartData }} <br> <br>
+    {{ doughnutChartData }}
   </div>
 </template>
 
 <script>
 import moment from 'moment'
-// import DoughnutChart from '~/components/doughnut-chart'
-// import BarChart from '~/components/bar-chart'
+import DoughnutChart from '~/components/doughnut-chart'
+import BarChart from '~/components/bar-chart'
 
 function isBot (username) {
   return username.includes('[bot]') || username.includes('-bot')
@@ -87,26 +78,22 @@ function getRandomColor () {
 }
 
 export default {
-  // components: {
-  //   DoughnutChart,
-  //   BarChart
-  // },
+  components: {
+    DoughnutChart,
+    BarChart
+  },
   async asyncData ({ $http, env, store }) {
-    let contributors = await $http.$get(store.getters.contributorUrl, {
-      headers: {
-        Authorization: `token ${env.githubToken}`
-      }
-    })
-    const stats = await $http.$get(store.getters.commitActivityUrl, {
-      headers: {
-        Authorization: `token ${env.githubToken}`
-      }
-    })
+    let contributors = await $http.$get(store.getters.contributorUrl)
+    const stats = await $http.$get(store.getters.commitActivityUrl)
     const ghUser = await $http.$get(store.getters.userUrl)
-    contributors = contributors.filter(c => c.contributions >= 10 && !isBot(c.login))
+    contributors = contributors.filter(
+      c => c.contributions >= 10 && !isBot(c.login)
+    )
     return {
       barChartData: {
-        labels: stats.map(stat => moment(stat.week * 1000).format('GGGG[-W]WW')),
+        labels: stats.map(stat =>
+          moment(stat.week * 1000).format('GGGG[-W]WW')
+        ),
         datasets: [
           {
             label: 'avimehenwal/fan-gallery Commit Activity',
@@ -125,12 +112,12 @@ export default {
           }
         ]
       },
+      stats,
       ghUser,
       contributors
     }
   },
-  data: () => ({
-  }),
+  data: () => ({}),
   computed: {
     contributorUrl () {
       return this.$store.getters.contributorUrl

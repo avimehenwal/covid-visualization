@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-breadcrumbs :items="items" large></v-breadcrumbs>
-    {{this.$router.currentRoute.path}} {{ getPath }}
+    <v-breadcrumbs :items="items" large />
+    {{ this.$router.currentRoute.path }} {{ getPath }}
   </div>
 </template>
 
@@ -17,5 +17,5 @@ export default {
       }
     ]
   })
-}
+};
 </script>

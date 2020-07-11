@@ -37,6 +37,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~plugins/ga.js', mode: 'client' }
   ],
   /*
   ** Auto import components
@@ -47,7 +48,8 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxt/typescript-build',
+    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify'
   ],
   /*

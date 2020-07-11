@@ -50,6 +50,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxt/components',
     '@nuxtjs/vuetify'
   ],
   /*
@@ -59,6 +60,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxt/http',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content'
   ],

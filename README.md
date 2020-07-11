@@ -1,43 +1,69 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f262da87-9d4c-46ae-986e-57484e0abcff/deploy-status)](https://app.netlify.com/sites/clever-raman-f3dd02/deploys)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![badge1][badge1-img]][link1]
 
-[badge1-img]: https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>
+[badge1-img]: https://img.shields.io/badge/avi-mehenwal-orange
 [link1]: https://github.com/avimehenwal
 
 # :open_file_folder: Covid Visualization
 
+> Visualization of covid cases from john hopkins dataset
 
-## :tv: Live Link / Demo
+## :tv: Demo
 
-:link: [Live Link][url]
+![Home Screen](demo/home_screen.png)
+
+#### :earth_asia: Breakdown by countries
+
+![Country Breakdown](demo/country_breakdown.png)
+
+---
+
+#### :octocat: [Live Link](https://covid-visualization.netlify.app/)
+
 
 ## :wrench: Installation / How to run?
 
 ```
-
+yarn
+yarn dev
 ```
 
 ## :pushpin: ToDos
 
+1. [ ] Use state management pattern
+2. [ ] API Polling interval
+3. [ ] Loading graphic management
+4. [ ] Incremental number animation
+5. [ ] Suggest search
+6. [ ] backup data in `.json` file
 
-## :sparkles: Whats Inside?
+
+## :sparkles: Animations
+
+* Number animation
+  * https://vuejsexamples.com/a-simple-vue-animated-number-for-vue2/
 
 
-### :beetle: [Open Issues][issue]
+## :cyclone: References
 
-
-### :date: [Changelog][changelog]
+* https://github.com/sorxrob/2019-ncov-frontend
+* https://github.com/CSSEGISandData/COVID-19/issues/576
+* https://github.com/github/covid19-dashboard
+* https://extranet.who.int/publicemergency
+* https://chschoenenberger.shinyapps.io/covid19_dashboard/
+* https://www.worldometers.info/population/
 
 
 ## :paperclip: Other Information
 
+### :date: [Changelog][changelog]
+
+### :beetle: [Open Issues][issue]
 
 ## :herb: License
 
 MIT
-
-## :cyclone: References / Resources
-
 
 [url]: https://covid-visualization.netlify.app/
 [issue]: https://github.com/avimehenwal/covid-visualization/issues

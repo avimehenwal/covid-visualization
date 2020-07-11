@@ -54,8 +54,6 @@
         </v-card>
       </v-col>
     </v-row>
-    {{ barChartData }} <br> <br>
-    {{ doughnutChartData }}
   </div>
 </template>
 

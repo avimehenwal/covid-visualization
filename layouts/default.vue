@@ -90,11 +90,6 @@ export default {
           icon: 'mdi-table'
         },
         {
-          to: '/about',
-          title: 'About',
-          icon: 'mdi-file-document-outline'
-        },
-        {
           icon: 'mdi-chart-bar',
           title: 'Github Stats',
           to: '/github'
@@ -114,6 +109,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Questions',
           to: '/inspire'
+        },
+        {
+          to: '/about',
+          title: 'About',
+          icon: 'mdi-file-document-outline'
         }
       ],
       miniVariant: false,

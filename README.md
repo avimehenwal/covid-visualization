@@ -1,22 +1,34 @@
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f262da87-9d4c-46ae-986e-57484e0abcff/deploy-status)](https://app.netlify.com/sites/clever-raman-f3dd02/deploys)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![badge1][badge1-img]][link1]
 
-# :octopus: covid-visualization  [![Netlify Status](https://api.netlify.com/api/v1/badges/f262da87-9d4c-46ae-986e-57484e0abcff/deploy-status)](https://app.netlify.com/sites/clever-raman-f3dd02/deploys)
+[badge1-img]: https://img.shields.io/badge/avi-mehenwal-orange
+[link1]: https://github.com/avimehenwal
 
-> covid cases data visualization
+# :open_file_folder: Covid Visualization
+
+> Visualization of covid cases from john hopkins dataset
 
 ## :tv: Demo
 
-:star: [Link to Live site][url]
-
-[url]: https://covid-visualization.netlify.app/
+## :octocat: [Project Live Link](https://covid-visualization.netlify.app/)
 
 ![Home Screen](demo/home_screen.png)
 
-### :earth_asia: Breakdown by countries
+#### :earth_asia: Breakdown by countries
 
 ![Country Breakdown](demo/country_breakdown.png)
 
 ---
+
+
+
+## :wrench: How to run?
+
+```
+yarn
+yarn dev
+```
 
 ## :pushpin: ToDos
 
@@ -27,7 +39,8 @@
 5. [ ] Suggest search
 6. [ ] backup data in `.json` file
 
-## :zap: Animations
+
+## :sparkles: Animations
 
 * Number animation
   * https://vuejsexamples.com/a-simple-vue-animated-number-for-vue2/
@@ -42,15 +55,23 @@
 * https://chschoenenberger.shinyapps.io/covid19_dashboard/
 * https://www.worldometers.info/population/
 
-## :guitar: License
+
+## :date: [Changelog][changelog]
+
+## :beetle: [Open Issues][issue]
+
+## :herb: License
 
 MIT
 
-## :beetle: Issues
+[url]: https://covid-visualization.netlify.app/
+[issue]: https://github.com/avimehenwal/covid-visualization/issues
+[changelog]: ./CHANGELOG.md
 
-To report a issue, or to start a conversation [post it here](https://github.com/avimehenwal/covid-visualization/issues)
+## :paperclip: Other Information
 
 ---
+
 
 #### :v: Get in touch with me
 

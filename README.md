@@ -19,8 +19,11 @@
 
 ![Country Breakdown](demo/country_breakdown.png)
 
----
+#### :bar_chart: Repo stats
 
+![Github Repositiry statistics](demo/github-stats.png)
+
+---
 
 
 ## :wrench: How to run?

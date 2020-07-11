@@ -48,7 +48,6 @@
           </v-card-title>
           <v-card-text>
             <DoughnutChart :data="doughnutChartData" :options="{ legend: { display: false }, maintainAspectRatio: false }" />
-            {{ doughnutChartData }}
           </v-card-text>
           <v-card-subtitle>Number of people contributing to the project, with the volume of contributions</v-card-subtitle>
         </v-card>

@@ -36,15 +36,30 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/google-analytics',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxt/components',
+    '@nuxtjs/vuetify',
+    '@nuxtjs/gtm'
   ],
+  googleAnalytics: {
+    id: process.env.GA_ID || '',
+    debug: {
+      enabled: true,
+      sendHitTask: true
+    }
+  },
+  gtm: {
+    id: process.env.GTM_ID || ''
+  },
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxt/content',
+    '@nuxt/http'
   ],
   /*
   ** Axios module configuration

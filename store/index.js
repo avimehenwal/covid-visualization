@@ -5,7 +5,10 @@ export const state = () => ({
   country: null,
   loading: null,
   error: null,
-  errorMessage: null
+  errorMessage: null,
+  base: 'https://api.github.com/',
+  user: 'avimehenwal',
+  repo: 'covid-visualization',
 })
 
 export const mutations = {
@@ -55,6 +58,20 @@ export const getters = {
   },
   getCountryCount: state => {
     return state.country.length
+  },
+  repoUrl (state) {
+    return state.base + 'repos/' + state.user + '/' + state.repo
+  },
+  contributorUrl (state, getters) {
+    return getters.repoUrl + '/contributors'
+  },
+  commitActivityUrl (state, getters) {
+    return getters.repoUrl + '/stats/commit_activity'
+  },
+  userUrl (state, getters) {
+    return state.base + 'users/' + state.user
+  },
+  gitRepo (state) {
+    return state.user + '/' + state.repo
   }
-
 }

@@ -42,11 +42,11 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
 
     <!-- <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed >
       <v-list>
@@ -89,6 +89,11 @@ export default {
           to: '/about',
           title: 'About',
           icon: 'mdi-file-document-outline'
+        },
+        {
+          icon: 'mdi-chart-bar',
+          title: 'Github Stats',
+          to: '/github'
         },
         {
           to: '/test',

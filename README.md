@@ -11,6 +11,8 @@
 
 ## :tv: Demo
 
+## :octocat: [Project Live Link](https://covid-visualization.netlify.app/)
+
 ![Home Screen](demo/home_screen.png)
 
 #### :earth_asia: Breakdown by countries
@@ -19,10 +21,9 @@
 
 ---
 
-#### :octocat: [Live Link](https://covid-visualization.netlify.app/)
 
 
-## :wrench: Installation / How to run?
+## :wrench: How to run?
 
 ```
 yarn
@@ -55,11 +56,9 @@ yarn dev
 * https://www.worldometers.info/population/
 
 
-## :paperclip: Other Information
+## :date: [Changelog][changelog]
 
-### :date: [Changelog][changelog]
-
-### :beetle: [Open Issues][issue]
+## :beetle: [Open Issues][issue]
 
 ## :herb: License
 
@@ -68,6 +67,8 @@ MIT
 [url]: https://covid-visualization.netlify.app/
 [issue]: https://github.com/avimehenwal/covid-visualization/issues
 [changelog]: ./CHANGELOG.md
+
+## :paperclip: Other Information
 
 ---
 
